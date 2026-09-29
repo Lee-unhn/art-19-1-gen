@@ -6,3 +6,7 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# collector
+sentiment-dashboard-template/tools/auth/
+sentiment-dashboard-template/tools/collected/
