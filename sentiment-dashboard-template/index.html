@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>聲量監測台</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1 id="title"></h1>
+      <p class="sub" id="subtitle"></p>
+    </div>
+    <div class="stamp" id="stamp"></div>
+  </header>
+
+  <section class="kpis" id="kpis" aria-label="摘要"></section>
+
+  <section class="panel">
+    <h2>每日聲量</h2>
+    <p class="lead" id="tlLead"></p>
+    <div class="chartbox"><svg id="tl" viewBox="0 0 900 300" role="img" aria-label="每日聲量長條圖" style="width:100%;min-width:640px;height:auto"></svg></div>
+  </section>
+
+  <div class="grid2">
+    <section class="panel">
+      <h2>議題分布</h2>
+      <p class="lead" id="topicLead"></p>
+      <div class="bars" id="topicBars"></div>
+    </section>
+    <section class="panel" id="catPanel">
+      <h2>留言類別</h2>
+      <p class="lead" id="catLead"></p>
+      <div class="bars" id="catBars"></div>
+    </section>
+  </div>
+
+  <section class="panel">
+    <h2>帳號連動</h2>
+    <p class="lead">大圓點是議題（或留言區），小圓點是媒體或帳號。帳號連到哪個大圓點，代表它在那裡發過內容。可以點圓點看詳細，也可以拖曳。</p>
+    <div class="callout" id="bridgeNote"></div>
+    <div class="controls">
+      <label><input type="checkbox" id="showOther"> 顯示其他立場的帳號</label>
+      <label id="replyLabel"><input type="checkbox" id="showReply" checked> 顯示回覆關係</label>
+    </div>
+    <div class="net">
+      <svg id="netsvg" role="img" aria-label="帳號與議題的連結網路"></svg>
+      <aside class="rail" id="rail" aria-live="polite"></aside>
+    </div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section class="panel" id="entities">
+    <h2>單位被提及的情況</h2>
+    <p class="lead">列是誰在發內容，欄是被提到的單位。點格子可以在下方原始紀錄看到那些內容。</p>
+    <div class="mx"><table id="mx"></table></div>
+    <div class="ent" id="ecards"></div>
+  </section>
+
+  <section class="panel" id="records">
+    <h2>原始紀錄</h2>
+    <div class="controls" role="tablist">
+      <button class="tab" role="tab" id="tabP" aria-selected="true"></button>
+      <button class="tab" role="tab" id="tabO" aria-selected="false"></button>
+      <button class="tab" role="tab" id="tabC" aria-selected="false"></button>
+      <input type="search" id="q" placeholder="搜尋帳號或內文">
+      <select id="fStance" aria-label="立場"></select>
+      <select id="fTopic" aria-label="議題"></select>
+      <select id="fCat" aria-label="留言類別" hidden></select>
+      <select id="fEnt" aria-label="提及單位"></select>
+      <button class="clear" id="clr">清除篩選</button>
+    </div>
+    <p class="sub" id="count" style="margin:0 0 8px"></p>
+    <div class="tbl"><table><thead id="th"></thead><tbody id="tb"></tbody></table></div>
+  </section>
+
+  <section class="notes" id="notes"></section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="src/lib.js"></script>
+<script src="src/kpis.js"></script>
+<script src="src/timeline.js"></script>
+<script src="src/bars.js"></script>
+<script src="src/matrix.js"></script>
+<script src="src/table.js"></script>
+<script src="src/network.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
